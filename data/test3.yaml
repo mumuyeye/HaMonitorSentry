@@ -1,0 +1,6 @@
+train: /mnt/data2/like/test/smoke_4/images
+val: /mnt/data2/like/test/smoke_4/images
+test: /mnt/data2/like/test/smoke_4/images
+
+nc: 1
+names: ['smoke']

@@ -1,0 +1,6 @@
+train: /mnt/data2/like/test/phone_total/images
+val: /mnt/data2/like/test/phone_total/images
+test: /mnt/data2/like/test/phone_total/images
+
+nc: 1
+names: ['phone']
