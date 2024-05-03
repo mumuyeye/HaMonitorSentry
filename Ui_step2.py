@@ -153,6 +153,7 @@ class Video(QMainWindow):
         self.flag = 0
         self.ui = Ui_MainWindow()
         self.ui.setupUi(self)
+        self.center()
         self.P = self.ui.p
         self.picture()
         self.ui.pushButton_0.clicked.connect(self.picture)
@@ -161,15 +162,21 @@ class Video(QMainWindow):
         self.printf()
         self.createChart()
 
+    def center(self):
+        qr = self.frameGeometry()
+        cp = QDesktopWidget().availableGeometry().center()
+        qr.moveCenter(cp)
+        self.move(qr.topLeft())
+
     def createChart(self):
         # 创建条状单元
         barSet0 = QBarSet('高空抛物数量')
-        barSet0.append([2, 1, 3, 3, 0, 0, 0, 0, 0, 0, 0, 0])
-        barSet0.setColor(QColor(70, 130, 180))  # 设置条形颜色为深蓝色
+        barSet0.append([2, 1, 3, 3, 0, 5, 1, 0, 1, 2, 4, 0])
+        barSet0.setColor(QColor(167, 192, 223))  
 
         barSet1 = QBarSet('高层危险行为数量')
-        barSet1.append([1, 3, 2, 4, 0, 0, 0, 0, 0, 0, 0, 0])
-        barSet1.setColor(QColor(255, 165, 0))  # 设置条形颜色为橙色
+        barSet1.append([1, 3, 2, 4, 3, 2, 1, 1, 0, 1, 0, 1])
+        barSet1.setColor(QColor(220, 167, 235))  
 
         # 条状图
         barSeries = QBarSeries()
