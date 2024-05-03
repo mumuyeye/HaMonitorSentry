@@ -149,7 +149,7 @@ from PyQt5.QtChart import QChartView
 class Video(QMainWindow):
     def __init__(self):
         super().__init__()
-        self.file_name = "video/1/"
+        self.file_name = "video/history_record/"
         self.flag = 0
         self.ui = Ui_MainWindow()
         self.ui.setupUi(self)
