@@ -146,7 +146,7 @@ class Ui_MainWindow(object):
         self.detect_pushdwon3.clicked.connect(self.func3)
         self.pushButton_4.clicked.connect(self.slotStop)
         self.show_btn.clicked.connect(self.show_his)
-        self.setWindowIcon(QIcon(os.getcwd() + '\img\logo.ico'))
+        self.setWindowIcon(QIcon(os.getcwd() + '/img/logo.ico'))
         self.retranslateUi(MainWindow)
         QtCore.QMetaObject.connectSlotsByName(MainWindow)
 
@@ -249,7 +249,7 @@ class Ui_MainWindow(object):
         #print(self.frame_s,length) #抽帧
         flag, self.image1 = self.cap_video.read()   #image1是视频的
         if flag == True:
-            if self.frame_s%1==0:  #抽帧
+            if self.frame_s%3==0:  #抽帧
                 #dir_path=os.getcwd()
                 # print("dir_path",dir_path)
                 #camera_source =dir_path+ "\\data\\test\\video.jpg"
@@ -275,7 +275,7 @@ class Ui_MainWindow(object):
         flag, self.image1 = self.cap_video.read()
         self.frame_s += 1
         if flag==True:
-            if self.frame_s % 2 == 0:   #抽帧
+            if self.frame_s % 3 == 0:   #抽帧
                 # face = self.face_detect.align(self.image)
                 # if face:
                 #     pass
@@ -312,7 +312,7 @@ class Ui_MainWindow(object):
                     ma = torch.from_numpy(ma).to(self.model.device)
                     im = torch.from_numpy(im).to(self.model.device)
                     ma = ma.half() if self.model.fp16 else ma.float()
-                    im = im.half() if self.model.fp16  else im.float()  # uint8 to fp16/32
+                    im = im.half() if self.model.fp16 else im.float()  # uint8 to fp16/32
                     ma /= 255
                     im /= 255  # 0 - 255 to 0.0 - 1.0
                     if len(im.shape) == 3:
@@ -388,18 +388,35 @@ class Ui_MainWindow(object):
         if not video.isOpened():
             print("Could not open video")
             sys.exit()
+        
+        plt.ion()  # 开启交互模式
+        # 调整 figsize 参数以改变窗口大小
+        figure, ax = plt.subplots(figsize=(10, 6))  # 这里的数值可以根据需要调整
+        ax.axis('off')  # 去除坐标轴
+        figure.canvas.set_window_title('回放抛物信息')
+
+        # 调整布局参数以减少留白
+        plt.subplots_adjust(left=0, right=1, top=1, bottom=0)
+
         while True:
             ok, frame = video.read()
             if ok:
-                cv2.imshow("Tracking", frame)
-                if cv2.waitKey(100) & 0xFF == ord('q'):
-                    break
+                frame = cv2.cvtColor(frame, cv2.COLOR_BGR2RGB)  # 转换颜色空间
+                if 'display_image' in locals():  # 如果display_image已定义，则更新数据
+                    display_image.set_data(frame)
+                else:
+                    display_image = ax.imshow(frame, aspect='auto')  # 首次显示图像，铺满整个页面
+                plt.pause(0.1)  # 设置暂停时间
+
+                if plt.waitforbuttonpress(0.1):
+                    break  # 如果在0.1秒内有按键则退出循环
             else:
                 print('failed')
                 break
-        # 释放摄像头
+
         video.release()
-        cv2.destroyAllWindows()
+        plt.ioff()  # 关闭交互模式
+        plt.show()
 
     def RemoveDir(filepath):
         '''

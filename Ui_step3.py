@@ -92,7 +92,7 @@ class Ui_MainWindow(object):
         self.pushButton = QtWidgets.QPushButton(self.centralwidget)
         self.pushButton.setGeometry(QtCore.QRect(295, 845, 250, 60))
         font = QtGui.QFont()
-        font.setFamily("AcadEref")
+        font.setFamily("Microsoft YaHei")  
         font.setPointSize(12)
         self.pushButton.setFont(font)
         self.pushButton.setObjectName("pushButton")
@@ -151,7 +151,7 @@ class Ui_MainWindow(object):
         self.pushButton_3.clicked.connect(MainWindow.close)
         self.pushButton_4.clicked.connect(MainWindow.close)
         self.pushButton_5.clicked.connect(MainWindow.close)
-        self.setWindowIcon(QIcon(os.getcwd() + '\img\logo.ico'))
+        self.setWindowIcon(QIcon(os.getcwd() + '/img/logo.ico'))
         self.retranslateUi(MainWindow)
         QtCore.QMetaObject.connectSlotsByName(MainWindow)
     
@@ -173,7 +173,7 @@ class Ui_MainWindow(object):
     def printf(self, mes):
         self.textBrowser.append(mes)  # 在指定的区域显示提示信息
         font = QtGui.QFont()
-        font.setFamily("AcadEref")
+        font.setFamily("Microsoft YaHei")  
         font.setPointSize(18)
         self.textBrowser.setFont(font)
         self.cursot = self.textBrowser.textCursor()
@@ -182,7 +182,7 @@ class Ui_MainWindow(object):
 
     def button_open_camera_click(self):
         if self.timer_camera1.isActive() == False and self.timer_camera2.isActive() == False:
-            flag = self.cap.open('video\MyVideo_1.mp4')
+            flag = self.cap.open('video/MyVideo_1.mp4')
             if flag == False:
                 msg = QtWidgets.QMessageBox.warning(self, u"Warning", u"请检测摄像头与电脑是否连接正确",
                                                     buttons=QtWidgets.QMessageBox.Ok,
@@ -204,17 +204,17 @@ class Ui_MainWindow(object):
 
 
     def show_camera(self):  #摄像头左边
-            flag, self.image = self.cap.read()
+        flag, self.image = self.cap.read()
 
-            #dir_path=os.getcwd()
-            #camera_source =dir_path+ "\\data\\test\\2.jpg"
-            #cv2.imwrite(camera_source, self.image)
+        #dir_path=os.getcwd()
+        #camera_source =dir_path+ "\\data\\test\\2.jpg"
+        #cv2.imwrite(camera_source, self.image)
 
-            frame = cv.cvtColor(self.image, cv.COLOR_BGR2RGB)
-            height, width, bytesPerComponent = self.image1.shape
-            bytesPerLine = bytesPerComponent * width
-            q_image = QImage(frame.data, width, height, bytesPerLine, QImage.Format_RGB888).scaled(self.label.width(), self.label.height())
-            self.label.setPixmap(QtGui.QPixmap.fromImage(q_image))
+        frame = cv.cvtColor(self.image, cv.COLOR_BGR2RGB)
+        height, width, bytesPerComponent = self.image.shape
+        bytesPerLine = bytesPerComponent * width
+        q_image = QImage(frame.data, width, height, bytesPerLine, QImage.Format_RGB888).scaled(self.label.width(), self.label.height())
+        self.label.setPixmap(QtGui.QPixmap.fromImage(q_image))
             
 
     def show_camera1(self):
@@ -222,116 +222,115 @@ class Ui_MainWindow(object):
 
         self.frame_s += 1
         if flag==True:
-            if self.frame_s % 1 == 0:   #抽帧
+            if self.frame_s % 3 == 0:   #抽帧
                
-                    fgMask = self.model.backSub.apply(self.image1)
-                    fgMask = cv.cvtColor(fgMask, cv.COLOR_GRAY2RGB)
+                fgMask = self.model.backSub.apply(self.image1)
+                fgMask = cv.cvtColor(fgMask, cv.COLOR_GRAY2RGB)
 
-                    frame1 = self.image1
-                    frame2 = self.image1
-                    self.model.framenum = self.model.framenum + 1
-                    img = letterbox(self.image1, self.model.imgsz, stride=self.model.stride, auto=True)[0]
-                    mask = letterbox(fgMask, self.model.imgsz, stride=self.model.stride, auto=True)[0]
-                    # Convert
-                    img = np.concatenate((img, mask), axis=2)
-                    mask = mask.transpose((2, 0, 1))[::-1]
-                    img = img.transpose((2, 0, 1))[::-1]  # HWC to CHW, BGR to RGB
-                    mask = np.ascontiguousarray(mask)
-                    img = np.ascontiguousarray(img)
-                    ma = mask
-                    im = img
-                    ma = torch.from_numpy(ma).to(self.model.device)
-                    im = torch.from_numpy(im).to(self.model.device)
-                    ma = ma.half() if self.model.fp16 else ma.float()
-                    im = im.half() if self.model.fp16  else im.float()  # uint8 to fp16/32
-                    ma /= 255
-                    im /= 255  # 0 - 255 to 0.0 - 1.0
-                    if len(im.shape) == 3:
-                        im = im[None]  # expand for batch dim
-                        ma = ma[None]
+                frame1 = self.image1
+                frame2 = self.image1
+                self.model.framenum = self.model.framenum + 1
+                img = letterbox(self.image1, self.model.imgsz, stride=self.model.stride, auto=True)[0]
+                mask = letterbox(fgMask, self.model.imgsz, stride=self.model.stride, auto=True)[0]
+                # Convert
+                img = np.concatenate((img, mask), axis=2)
+                mask = mask.transpose((2, 0, 1))[::-1]
+                img = img.transpose((2, 0, 1))[::-1]  # HWC to CHW, BGR to RGB
+                mask = np.ascontiguousarray(mask)
+                img = np.ascontiguousarray(img)
+                ma = mask
+                im = img
+                ma = torch.from_numpy(ma).to(self.model.device)
+                im = torch.from_numpy(im).to(self.model.device)
+                ma = ma.half() if self.model.fp16 else ma.float()
+                im = im.half() if self.model.fp16  else im.float()  # uint8 to fp16/32
+                ma /= 255
+                im /= 255  # 0 - 255 to 0.0 - 1.0
+                if len(im.shape) == 3:
+                    im = im[None]  # expand for batch dim
+                    ma = ma[None]
 
-                    # example shape of img(torch.Size([1, 3, 384, 640]))
-                    # slice_img = []
+                # example shape of img(torch.Size([1, 3, 384, 640]))
+                # slice_img = []
 
-                    pred = self.model.model(im, ma, augment=False, visualize=False)
-                    # pred shape[1, x, 6]
-                    pred = non_max_suppression(pred, self.model.conf_thres, self.model.iou_thres, classes=None, agnostic=False, max_det=50)
+                pred = self.model.model(im, ma, augment=False, visualize=False)
+                # pred shape[1, x, 6]
+                pred = non_max_suppression(pred, self.model.conf_thres, self.model.iou_thres, classes=None, agnostic=False, max_det=50)
 
-                    # import ipdb
-                    bounds = []
-                    for i, det in enumerate(pred):
-                        im0 = self.image1.copy()
-                        gn = torch.tensor(im0.shape)[[1, 0, 1, 0]]
+                # import ipdb
+                bounds = []
+                for i, det in enumerate(pred):
+                    im0 = self.image1.copy()
+                    gn = torch.tensor(im0.shape)[[1, 0, 1, 0]]
 
-                        if len(det):
-                            initial = True
-                            det[:, :4] = scale_coords(im.shape[2:], det[:, :4], im0.shape).round()
+                    if len(det):
+                        initial = True
+                        det[:, :4] = scale_coords(im.shape[2:], det[:, :4], im0.shape).round()
 
-                            #print(det)
-                            #print("1")
+                        #print(det)
+                        #print("1")
 
-                            for *xyxy, conf, cls in reversed(det):
-                                bounds.append((torch.tensor(xyxy).view(1, 4)).view(-1).tolist())
-                             
-                    for box in bounds:
-                        self.count += 1
-                        if self.count < 3: continue
-                        frame1 = cv.rectangle(frame1, (int(box[0]), int(box[1])), (int(box[2]), int(box[3])), color=self.model.box_color,
-                              thickness=1)
-                        #t = time.strftime('%Y-%m-%d %H:%M:%S',time.localtime(time.time()))
-                        #x = time.asctime(t)
-                        #self.printf(str(t) + "发现抛物")
+                        for *xyxy, conf, cls in reversed(det):
+                            bounds.append((torch.tensor(xyxy).view(1, 4)).view(-1).tolist())
+                            
+                for box in bounds:
+                    self.count += 1
+                    if self.count < 3: continue
+                    frame1 = cv.rectangle(frame1, (int(box[0]), int(box[1])), (int(box[2]), int(box[3])), color=self.model.box_color,
+                            thickness=1)
+                    #t = time.strftime('%Y-%m-%d %H:%M:%S',time.localtime(time.time()))
+                    #x = time.asctime(t)
+                    #self.printf(str(t) + "发现抛物")
 
-                        #t = time.strftime('%Y-%m-%d %H:%M:%S', time.localtime(time.time()))
-                        Ti = time.strftime('%Y-%m-%d', time.localtime(time.time()))
-                        visual_file_root = os.path.join("history_img", Ti)
-                        if not os.path.exists(visual_file_root):
-                            os.mkdir(visual_file_root)
-                        visual_file = os.path.join(visual_file_root,
-                                                   "detframe{}.jpg".format(self.model.framenum))
-                        cv.imwrite(visual_file, frame1)
-                        #self.printf(t + "发现抛物")
-                        
-                        if self.waring_flag and self.count == 3:
-                            self.waring_flag = False
-                            self.waring_time.start(30)
-                        #if (self.waring != QtWidgets.QMessageBox.Ok):
-                        #    self.waring = QtWidgets.QMessageBox.warning(self, u"Warning", u"小心抛物！",
-                        #                                            buttons=QtWidgets.QMessageBox.Ok,
-                        #                                           defaultButton=QtWidgets.QMessageBox.Ok)
-                        #else:
-                        #    self.waring = 0
+                    #t = time.strftime('%Y-%m-%d %H:%M:%S', time.localtime(time.time()))
+                    Ti = time.strftime('%Y-%m-%d', time.localtime(time.time()))
+                    visual_file_root = os.path.join("history_img", Ti)
+                    if not os.path.exists(visual_file_root):
+                        os.mkdir(visual_file_root)
+                    visual_file = os.path.join(visual_file_root,
+                                                "detframe{}.jpg".format(self.model.framenum))
+                    cv.imwrite(visual_file, frame1)
+                    #self.printf(t + "发现抛物")
+                    
+                    if self.waring_flag and self.count == 3:
+                        self.waring_flag = False
+                        self.waring_time.start(30)
+                    #if (self.waring != QtWidgets.QMessageBox.Ok):
+                    #    self.waring = QtWidgets.QMessageBox.warning(self, u"Warning", u"小心抛物！",
+                    #                                            buttons=QtWidgets.QMessageBox.Ok,
+                    #                                           defaultButton=QtWidgets.QMessageBox.Ok)
+                    #else:
+                    #    self.waring = 0
 
-                        visual_file_root = os.path.join("shishi","1")
-                        if not os.path.exists(visual_file_root):
-                            os.mkdir(visual_file_root)
-                        visual_file = os.path.join(visual_file_root,"detframe{}.jpg".format(self.model.framenum))
-                        cv.imwrite(visual_file, frame1)
+                    visual_file_root = os.path.join("shishi","1")
+                    if not os.path.exists(visual_file_root):
+                        os.mkdir(visual_file_root)
+                    visual_file = os.path.join(visual_file_root,"detframe{}.jpg".format(self.model.framenum))
+                    cv.imwrite(visual_file, frame1)
 
-                    video_out_root = os.path.join("shishi", "2")
-                    if not os.path.exists(video_out_root):
-                        os.mkdir(video_out_root)
-                    video_out = os.path.join(video_out_root,"outframe{}.jpg".format(self.model.framenum))
-                    cv.imwrite(video_out, frame1)
+                video_out_root = os.path.join("shishi", "2")
+                if not os.path.exists(video_out_root):
+                    os.mkdir(video_out_root)
+                video_out = os.path.join(video_out_root,"outframe{}.jpg".format(self.model.framenum))
+                cv.imwrite(video_out, frame1)
 
-                    height, width, bytesPerComponent = self.image1.shape
-                    bytesPerLine = bytesPerComponent * width
-                    q_image = QImage(self.image1.data, width, height, bytesPerLine, QImage.Format_RGB888).scaled(self.label_4.width(), self.label_4.height())
-                #print(f"self.video_box.width:{self.video_box.width()}, self.label.width():{self.label.width()}")
-                #q_image = QImage(frame.data, width, height, bytesPerLine,
-                #                 QImage.Format_RGB888).scaled(self.video_box.width(), self.video_box.height())
+                height, width, bytesPerComponent = self.image1.shape
+                bytesPerLine = bytesPerComponent * width
+                q_image = QImage(self.image1.data, width, height, bytesPerLine, QImage.Format_RGB888).scaled(self.label_4.width(), self.label_4.height())
+            #print(f"self.video_box.width:{self.video_box.width()}, self.label.width():{self.label.width()}")
+            #q_image = QImage(frame.data, width, height, bytesPerLine,
+            #                 QImage.Format_RGB888).scaled(self.video_box.width(), self.video_box.height())
 
-                    self.label_4.setPixmap(QPixmap.fromImage(q_image))
+                self.label_4.setPixmap(QPixmap.fromImage(q_image))
 
     def warning_func(self):
-            
-                t = time.strftime('%Y-%m-%d %H:%M:%S', time.localtime(time.time()))
-                self.printf(t + "发现抛物")
-                if (self.waring != QtWidgets.QMessageBox.Ok):
-                    self.waring = QtWidgets.QMessageBox.warning(self, u"Warning", u"小心抛物！",
-                                                                    buttons=QtWidgets.QMessageBox.Ok,
-                                                                    defaultButton=QtWidgets.QMessageBox.Ok)
-                else:
-                    self.waring = 0
+        t = time.strftime('%Y-%m-%d %H:%M:%S', time.localtime(time.time()))
+        self.printf(t + "发现抛物")
+        if (self.waring != QtWidgets.QMessageBox.Ok):
+            self.waring = QtWidgets.QMessageBox.warning(self, u"Warning", u"小心抛物！",
+                                                            buttons=QtWidgets.QMessageBox.Ok,
+                                                            defaultButton=QtWidgets.QMessageBox.Ok)
+        else:
+            self.waring = 0
 
-                self.waring_time.stop()
+        self.waring_time.stop()

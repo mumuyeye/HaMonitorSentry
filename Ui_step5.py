@@ -28,7 +28,7 @@ class Ui_MainWindow(object):
         self.centralwidget.setObjectName("centralwidget")
         self.pushButton = QtWidgets.QPushButton(self.centralwidget)
         font = QtGui.QFont()
-        font.setFamily("AcadEref")
+        font.setFamily("Microsoft YaHei")  
         font.setPointSize(14)
         self.pushButton.setFont(font)
         self.pushButton.setStyleSheet("color: rgb(255, 255, 255);")
@@ -41,7 +41,7 @@ class Ui_MainWindow(object):
         MainWindow.setStatusBar(self.statusbar)
         self.pushButton.clicked.connect(self.close)
         self.retranslateUi(MainWindow)
-        self.setWindowIcon(QIcon(os.getcwd() + '\img\logo.ico'))
+        self.setWindowIcon(QIcon(os.getcwd() + '/img/logo.ico'))
         QtCore.QMetaObject.connectSlotsByName(MainWindow)
 
     def paintEvent(self, event):

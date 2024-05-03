@@ -31,8 +31,8 @@ class Ui_MainWindow(object):
         self.pushButton = QtWidgets.QPushButton(self.centralwidget)
         self.pushButton2 = QtWidgets.QPushButton(self.centralwidget)
         font = QtGui.QFont()
-        font.setFamily("AcadEref")
-        font.setPointSize(14)
+        font.setFamily("Microsoft YaHei")  
+        font.setPointSize(14)  
         self.pushButton.setFont(font)
         self.pushButton.setStyleSheet("color: rgb(255, 255, 255);")
         self.pushButton.setFlat(True)
@@ -69,12 +69,12 @@ class Ui_MainWindow(object):
         self.pushButton.clicked.connect(self.close)
         self.pushButton2.clicked.connect(self.close)
         self.retranslateUi(MainWindow)
-        self.setWindowIcon(QIcon(os.getcwd() + '\img\logo.ico'))
+        self.setWindowIcon(QIcon(os.getcwd() + '/img/logo.ico'))
         QtCore.QMetaObject.connectSlotsByName(MainWindow)
 
     def paintEvent(self, event):
         painter = QPainter(self)
-        pixmap = QPixmap("img/9.jpg")
+        pixmap = QPixmap("img/new_start.jpg")
         painter.drawPixmap(self.rect(), pixmap)
 
     def retranslateUi(self, MainWindow):

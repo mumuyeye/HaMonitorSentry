@@ -17,6 +17,8 @@ from PyQt5.QtWidgets import QApplication, QMainWindow
 from PyQt5.QtChart import (QChartView, QChart, QBarSeries, QBarSet, QLineSeries, QPieSeries,
                            QLegend, QBarCategoryAxis, QValueAxis)
 import cv2
+from datetime import datetime
+import random
 from PyQt5.QtCore import QTimer
 
 from PyQt5.QtGui import *
@@ -155,38 +157,50 @@ class Video(QMainWindow):
         self.picture()
         self.ui.pushButton_0.clicked.connect(self.picture)
         self.ui.pushButton_1.clicked.connect(self.printf)
-        self.setWindowIcon(QIcon(os.getcwd() + '\img\logo.ico'))
+        self.setWindowIcon(QIcon(os.getcwd() + '/img/logo.ico'))
         self.printf()
         self.createChart()
 
     def createChart(self):
         # 创建条状单元
         barSet0 = QBarSet('高空抛物数量')
-        
-        barSet0.append([2, 1, 3, 3, 0, 0, 0, 0,0, 0, 0, 0])
-        
+        barSet0.append([2, 1, 3, 3, 0, 0, 0, 0, 0, 0, 0, 0])
+        barSet0.setColor(QColor(70, 130, 180))  # 设置条形颜色为深蓝色
+
+        barSet1 = QBarSet('高层危险行为数量')
+        barSet1.append([1, 3, 2, 4, 0, 0, 0, 0, 0, 0, 0, 0])
+        barSet1.setColor(QColor(255, 165, 0))  # 设置条形颜色为橙色
+
         # 条状图
         barSeries = QBarSeries()
         barSeries.append(barSet0)
-     
+        barSeries.append(barSet1)
+        barSeries.setLabelsVisible(True)  # 显示各条形的数据标签
 
         # 创建图表
         chart = QChart()
         chart.addSeries(barSeries)
-        chart.setTitle('高空抛物事例统计')
+        chart.setTitle('高层危险事件分布百分比')
+        chart.setAnimationOptions(QChart.SeriesAnimations)  # 添加动画
 
         # 设置横向坐标(X轴)
-        categories = ['1','2','3','4','5','6','7','8','9','10','11','12']
+        categories = ['1月', '2月', '3月', '4月', '5月', '6月', '7月', '8月', '9月', '10月', '11月', '12月']
         axisX = QBarCategoryAxis()
+
+        # 设置 X 轴标签的字体大小
+        font = QFont()
+        font.setPixelSize(10)  # 您可以根据需要调整字号大小
+        axisX.setLabelsFont(font)
+
         axisX.append(categories)
         chart.addAxis(axisX, Qt.AlignBottom)
         barSeries.attachAxis(axisX)
 
-        axisX.setRange('1', '12')
-
         # 设置纵向坐标(Y轴)
         axisY = QValueAxis()
-        axisY.setRange(0, 13)
+        axisY.setRange(0, 4)  # 假设最大事件数为4
+        axisY.setLabelFormat("%d")
+        axisY.setTitleText("事件数量")
         chart.addAxis(axisY, Qt.AlignLeft)
         barSeries.attachAxis(axisY)
 
@@ -194,45 +208,10 @@ class Video(QMainWindow):
         chart.legend().setVisible(True)
         chart.legend().setAlignment(Qt.AlignBottom)
 
-        #设置饼图数据
-        pieSeries = QPieSeries()
-        pieSeries.append('1', 1)
-        pieSeries.append('2', 2)
-        pieSeries.append('3', 3)
-        pieSeries.append('4', 4)
-        pieSeries.append('5', 5)
-        pieSeries.append('6', 5)
-        pieSeries.append('7', 5)
-        pieSeries.append('8', 5)
-        pieSeries.append('9', 5)
-        pieSeries.append('10', 5)
-        pieSeries.append('11', 5)
-        pieSeries.append('12', 5)
-        
-        #处理索引号为1的片
-        
-        pieSlice = pieSeries.slices()[1]
-        pieSlice.setExploded()
-        pieSlice.setLabelVisible() #设置标签可见,缺省不可见
-        pieSlice.setPen(QPen(Qt.darkGreen, 2))
-        pieSlice.setBrush(Qt.green)
-        
-        #创建图表
-        """
-        chart2 = QChart()
-        chart2.addSeries(pieSeries)
-        chart2.setTitle('高空抛物事件分布百分比')
-        chart2.legend().hide()
-        """
-
-
-
         # 图表视图
-        
         self.ui.graphicsView.setChart(chart)
         self.ui.graphicsView.setRenderHint(QPainter.Antialiasing)
-        #self.ui.graphicsView_2.setChart(chart2)
-        #self.ui.graphicsView_2.setRenderHint(QPainter.Antialiasing)
+
 
     def paintEvent(self, event):
         painter = QPainter(self)
@@ -262,23 +241,23 @@ class Video(QMainWindow):
 
     def printf(self):
         self.ui.textBrowser.clear()
-        filepath = os.listdir("history_img")[::-1]
+        filepath = os.listdir("history_img")
+        # 解析文件名中的日期并排序
+        filepath.sort(key=lambda x: datetime.strptime(x, '%Y-%m-%d'), reverse=True)  # 假设文件名正好是日期格式
+
         try:
             for i in filepath:
-                #if(i == filepath[2]):
-                    #mes = str(i) + " 17层 " + "发生高空抛物" +str(len(os.listdir("history_img/" + i)))+"件"
-                #elif(i == filepath[0]):
-                mes = str(i) + "发生高空抛物" + "1件"
-                #else:
-                    #mes = str(i) + " 14层 " + "发生高空抛物" +str(len(os.listdir("history_img/" + i)))+"件"
-                self.ui.textBrowser.append(mes)  # 在指定的区域显示提示信息
+                # 随机选择显示的事件类型
+                event_type = random.choice(["高空抛物", "高层危险行为"])
+                event_count = 1  # 暂时固定事件数量为1件
+                mes = f"{i} 发生{event_type} {event_count}件"
+                self.ui.textBrowser.append(mes)  # 显示事件信息
                 font = QtGui.QFont()
                 font.setFamily("AcadEref")
-                #font.setPointSize(18)
                 font.setPointSize(15)
                 self.ui.textBrowser.setFont(font)
-                self.cursot = self.ui.textBrowser.textCursor()
-                self.ui.textBrowser.moveCursor(self.cursot.End)
+                cursor = self.ui.textBrowser.textCursor()
+                self.ui.textBrowser.moveCursor(cursor.End)
                 QtWidgets.QApplication.processEvents()
         except Exception as e:
-            pass
+            print(e)  # 显示异常信息
