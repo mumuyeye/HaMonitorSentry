@@ -41,6 +41,9 @@ from nms import py_cpu_nms
 import time as T
 import re
 import linecache
+import matplotlib
+matplotlib.use('TkAgg')
+
 import matplotlib.pyplot as plt
 from utils.torch_utils import select_device, time_sync
 from models.common import DetectMultiBackend
