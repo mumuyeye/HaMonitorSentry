@@ -156,6 +156,9 @@ class Video(QMainWindow):
         self.center()
         self.P = self.ui.p
         self.picture()
+        self.current_index = 0 
+        self.filepath = os.listdir("history_img")
+        self.filepath.sort(key=lambda x: datetime.strptime(x, '%Y-%m-%d'), reverse=False)  
         self.ui.pushButton_0.clicked.connect(self.picture)
         self.ui.pushButton_1.clicked.connect(self.printf)
         self.setWindowIcon(QIcon(os.getcwd() + '/img/logo.ico'))
@@ -247,24 +250,24 @@ class Video(QMainWindow):
                 break
 
     def printf(self):
-        self.ui.textBrowser.clear()
-        filepath = os.listdir("history_img")
-        # 解析文件名中的日期并排序
-        filepath.sort(key=lambda x: datetime.strptime(x, '%Y-%m-%d'), reverse=True)  # 假设文件名正好是日期格式
+        self.ui.textBrowser.setFont(QtGui.QFont("Microsoft YaHei", 15))  # 设置一次字体，避免在循环中重复设置
 
         try:
-            for i in filepath:
-                # 随机选择显示的事件类型
+            # 每次显示3条消息，或者根据文件剩余数量显示更少
+            for i in range(3):
+                if self.current_index >= len(self.filepath):
+                    break  # 如果所有文件都已处理，退出循环
+
+                filename = self.filepath[self.current_index]
+                self.current_index += 1
                 event_type = random.choice(["高空抛物", "高层危险行为"])
                 event_count = 1  # 暂时固定事件数量为1件
-                mes = f"{i} 发生{event_type} {event_count}件"
+                mes = f"{filename} 发生{event_type} {event_count}件"
                 self.ui.textBrowser.append(mes)  # 显示事件信息
-                font = QtGui.QFont()
-                font.setFamily("AcadEref")
-                font.setPointSize(15)
-                self.ui.textBrowser.setFont(font)
+
                 cursor = self.ui.textBrowser.textCursor()
                 self.ui.textBrowser.moveCursor(cursor.End)
                 QtWidgets.QApplication.processEvents()
+
         except Exception as e:
             print(e)  # 显示异常信息
