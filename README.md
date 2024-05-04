@@ -14,6 +14,7 @@
 git clone https://github.com/mumuyeye/HaMonitorSentry.git
 cd HaMonitorSentry
 conda env create -f environment.yml
+conda activate sentry
 ```
 
 ## 系统显示字体安装
