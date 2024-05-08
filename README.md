@@ -30,6 +30,10 @@ fc-cache -fv
 fc-list | grep "MSYH"
 ```
 
+## 数据集示例
+
+如需下载HaMonitorSentry所使用的数据集示例：访问[百度网盘链接](https://pan.baidu.com/s/12ACPttrbEMglgN6v_PanEw?pwd=2333)并使用提取码 `2333`进行下载。
+
 ## 运行系统
 
 ```bash
