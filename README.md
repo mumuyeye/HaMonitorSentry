@@ -120,10 +120,10 @@ python demo.py
 <img src="img/new_start.jpg" alt="系统概览" style="zoom:50%;" />
 
 
-## 结语
+## 作者的话
 
 &nbsp;&nbsp;&nbsp;&nbsp;以上就是本作品的全部介绍，欢迎star！
 
 <img src="image/README/1715680450611.jpg" alt="结尾图片" style="zoom:50%;" />
 
-&nbsp;&nbsp;&nbsp;&nbsp;**驭科技以守护，持创新以护航**，HaMonitorSentry 高层智能监测系统定会成为 **智能安防，平安中国** 之船的重要组成部分，载着人民共同渡往安全幸福的彼方。
+&nbsp;&nbsp;&nbsp;&nbsp;**驭科技以守护，持创新以护航**，HaMonitorSentry 高层智能监测系统定会成为 **智能安防、平安中国** 之船的重要组成部分，载着人民共同渡往安全幸福的彼方。
