@@ -129,19 +129,17 @@
         <h2>核心功能</h2>
         <h3>高空抛/坠物监测</h3>
         <ul>
-            <li>系统的第一个核心是高空抛/坠<strong>“物”监测</strong>。</li>
-            <li>采用 <strong>Panoptic FPN ResNet-101</strong> 语义分割技术提取建筑物背景并使用类间距离蒸馏，并对运动对象进行去噪处理，同时引入 <strong>MA
-                    模块</strong>，加速信息流动效率。</li>
-            <li>最终使得高空抛物<strong>检出率</strong>稳定在 <strong>65%</strong> 以上，<strong>误报率</strong>小于
-                <strong>15%</strong>，理想情况下检出率可达 <strong>95%</strong>，误报率小于 <strong>5%</strong>。
+            <li>系统的第一个核心是高空抛/坠<strong>“物”监测</strong>；</li>
+            <li>采用 <strong>Panoptic FPN ResNet-101</strong> 语义分割技术提取建筑物背景并使用类间距离蒸馏，并对运动对象进行去噪处理，同时引入 <strong>MA 模块</strong>，加速信息流动效率；</li>
+            <li>最终使得高空抛物<strong>检出率</strong>稳定在 <strong>65%</strong> 以上，<strong>误报率</strong>小于 <strong>15%</strong>，理想情况下检出率可达 <strong>95%</strong>，误报率小于 <strong>5%</strong>。
             </li>
         </ul>
         <img src="image/README/1715679635883.jpg" alt="技术示意" />
 
         <h3>高层建筑边缘危险行为监测</h3>
         <ul>
-            <li>第二个核心是高层建筑物边缘侧<strong>“人”</strong>的<strong>危险行为监测</strong>。</li>
-            <li>在同一个网络中<strong>融合时序信息和空间信息</strong>，捕捉视频中的动态行为和时间依赖特征，通过<strong>多头注意力和前馈网络</strong>处理。</li>
+            <li>第二个核心是高层建筑物边缘侧<strong>“人”</strong>的<strong>危险行为监测</strong>；</li>
+            <li>在同一个网络中<strong>融合时序信息和空间信息</strong>，捕捉视频中的动态行为和时间依赖特征，通过<strong>多头注意力和前馈网络</strong>处理；</li>
             <li>最终使得人体检测率大于 <strong>70%</strong>，行为及危险系数确认<strong>误识率</strong>小于 <strong>15%</strong>，理想情况下检测率可达
                 <strong>95%</strong>，误报率小于 <strong>5%</strong>。
             </li>
@@ -152,7 +150,7 @@
         <h2>数据集构建与开源</h2>
         <ul>
             <li>我们构建了高质量 <a
-                    href="https://pan.baidu.com/s/12ACPttrbEMglgN6v_PanEw?pwd=2333">高空抛物检测原创数据集</a>，涵盖丰富的场景及多样的抛物类别。
+                    href="https://pan.baidu.com/s/12ACPttrbEMglgN6v_PanEw?pwd=2333">高空抛物检测原创数据集</a>，涵盖丰富的场景及多样的抛物类别；
             </li>
         </ul>
         <img src="image/README/1715679712273.jpg" alt="技术示意" style="zoom:50%;" />
@@ -175,66 +173,17 @@
 <br>
         <h2>产学研一体</h2>
         <ul>
-            <li>目前基于本作品已落实<strong>1项专利</strong>、<strong>3项软著</strong>、<strong>1篇学术论文</strong>以及<strong>2个原创数据集</strong>。
-            </li>
+            <li>目前基于本作品已落实<strong>1项专利</strong>、<strong>3项软著</strong>、<strong>1篇学术论文</strong>以及<strong>2个原创数据集</strong>；</li>
         </ul>
         <img src="image/README/1715697181278.png" alt="产研一体" style="zoom:50%;" />
         <ul>
-            <li>本作品由<strong>深圳英飞拓智能技术有限公司</strong>提供硬件支持，促进应用研发过程。</li>
+            <li>本作品由<strong>深圳英飞拓智能技术有限公司</strong>提供硬件支持，促进应用研发过程；</li>
         </ul>
         <img src="image/README/1715679811207.jpg" alt="系统实现" style="zoom:50%;" />
         <ul>
-            <li>计划将该系统应用于<strong>深圳湾超级总部基地及其他多个园区</strong>，实现落地试点，带来广泛的社会效益和显著的科技示范效益。</li>
+            <li>并将本系统应用于<strong>深圳湾超级总部基地及其他多个园区</strong>，实现落地试点，带来广泛的社会效益和显著的科技示范效益。</li>
         </ul>
         <img src="image/README/1715679817826.png" alt="系统实现" style="zoom:50%;" />
-
-        <h2>系统运行环境</h2>
-        <ul>
-            <li><strong>操作系统</strong>: Ubuntu 20.04.3 LTS (Focal Fossa)</li>
-        </ul>
-
-<br>
-        <h2>环境配置</h2>
-    <blockquote>
-        <code>
-                git clone https://github.com/mumuyeye/HaMonitorSentry.git
-                cd HaMonitorSentry
-                conda env create -f environment.yml
-                conda activate sentry
-        </code>    
-    </blockquote>
-
-<br>
-        <h2>系统显示配置</h2>
-        <pre>
-            <code>
-                # 创建字体目录（如果尚未存在）
-                mkdir -p ~/.local/share/fonts
-                # 复制字体文件
-                cp /root/sentry/HaMonitorSentry/MSYH.TTF ~/.local/share/fonts/
-                # 更新字体缓存
-                fc-cache -fv
-                # 验证字体是否安装成功
-                fc-list | grep "MSYH"
-            </code>
-        </pre>
-
-<br>
-        <h2>数据集</h2>
-        <ul>
-            <li>如需下载 HaMonitorSentry 所使用的数据集示例，访问 <a
-                    href="https://pan.baidu.com/s/12ACPttrbEMglgN6v_PanEw?pwd=2333">百度网盘链接</a> 并使用提取码 <code>2333</code>
-                进行下载。</li>
-        </ul>
-
-<br>
-        <h2>运行系统</h2>
-        <pre>
-            <code>
-                python demo.py
-            </code>
-        </pre>
-        <img src="img/new_start.jpg" alt="系统概览" />
 
 <br>
         <h2>系统介绍视频</h2>
@@ -242,8 +191,13 @@
             <source src="image/README/演示视频_系统.mp4" type="video/mp4">
             您的浏览器不支持视频标签。
         </video>
-
+        
+<br>
+        <h2>作者的话</h2>
         <footer>
+            <ul>
+                <li>以上就是本作品的全部介绍~</li>
+            </ul>
             <img src="image/README/1715680450611.jpg" alt="结尾图片" class="small-img" />
             <ul>
                 <li><strong>驭科技以守护，持创新以护航</strong>，HaMonitorSentry 高层智能监测系统定会成为 <strong>智能安防，平安中国</strong>
