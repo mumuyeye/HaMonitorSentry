@@ -12,6 +12,7 @@
             margin: 20px;
             line-height: 1.6;
             color: #333;
+            text-align: center;
         }
 
         h1,
@@ -20,7 +21,6 @@
         h4,
         h5,
         h6 {
-            text-align: center;
             margin-top: 48px;
             margin-bottom: 16px;
         }
@@ -29,7 +29,6 @@
         img,
         pre,
         blockquote {
-            text-align: left;
             margin-top: 16px;
             margin-bottom: 16px;
         }
@@ -55,6 +54,7 @@
             color: #666;
             background-color: #f9f9f9;
             border-radius: 5px;
+            text-align: left;
         }
 
         pre {
@@ -62,6 +62,7 @@
             padding: 10px;
             border-radius: 5px;
             overflow-x: auto;
+            text-align: left;
         }
 
         code {
@@ -69,9 +70,11 @@
         }
 
         ul {
-            margin: 20px;
+            margin: 20px auto;
             padding: 0;
             list-style: none;
+            text-align: left;
+            max-width: 80%;
         }
 
         ul li {
@@ -114,11 +117,13 @@
     </p>
     <img src="image/README/1715679541656.png" alt="监测示例" />
 
-    <p>有数据显示，我国近三年来高层事故数量<strong>连年增长</strong>，这些触目惊心的数字警示着我们正面临着的<strong>严峻的社会安防威胁</strong>。
-        但同时，令人振奋的是，国家已<strong>发布多项政策</strong>，来支持我国智能安防的建设与发展。
-        <strong>公共安全领域投入也逐步扩大</strong>，总体呈现逐步增长之势。
-        智能安防行业市场规模也持续增长。
-    </p>
+    <ul>
+        <li>有数据显示，我国近三年来高层事故数量<strong>连年增长</strong>，这些触目惊心的数字警示着我们正面临着<strong>严峻的社会安防威胁</strong>。</li>
+        <li>但同时，令人振奋的是，国家已<strong>发布多项政策</strong>，来支持我国智能安防的建设与发展。</li>
+        <li><strong>公共安全领域投入也逐步扩大</strong>，总体呈现逐步增长之势。</li>
+        <li>智能安防行业市场规模也持续增长。</li>
+    </ul>
+
     <p>此外我们总结了目前仍然难以解决的痛点：</p>
     <ul>
         <li>高空事故发生前<strong>无法及时警示</strong>有关主体</li>
@@ -137,17 +142,23 @@
     <h2>核心功能</h2>
     <h3>高空抛/坠物监测</h3>
     <ul>
-        <li>系统的第一个核心是高空抛/坠“物”监测。</li>
-        <li>采用 Panoptic FPN ResNet-101 语义分割技术提取建筑物背景并使用类间距离蒸馏，并对运动对象进行去噪处理，同时引入 MA 模块，加速信息流动效率。</li>
-        <li>最终使得高空抛物检出率稳定在 65% 以上，误报率小于 15%，理想情况下检出率可达 95%，误报率小于 5%。</li>
+        <li>系统的第一个核心是高空抛/坠<strong>“物”监测</strong>。</li>
+        <li>采用 <strong>Panoptic FPN ResNet-101</strong> 语义分割技术提取建筑物背景并使用类间距离蒸馏，并对运动对象进行去噪处理，同时引入 <strong>MA
+                模块</strong>，加速信息流动效率。</li>
+        <li>最终使得高空抛物<strong>检出率</strong>稳定在 <strong>65%</strong> 以上，<strong>误报率</strong>小于
+            <strong>15%</strong>，理想情况下检出率可达
+            <strong>95%</strong>，误报率小于 <strong>5%</strong>。
+        </li>
     </ul>
     <img src="image/README/1715679635883.jpg" alt="技术示意" />
 
     <h3>高层建筑边缘危险行为监测</h3>
     <ul>
-        <li>第二个核心是高层建筑物边缘侧“人”的危险行为监测。</li>
-        <li>在同一个网络中融合时序信息和空间信息，捕捉视频中的动态行为和时间依赖特征，通过多头注意力和前馈网络处理。</li>
-        <li>最终使得人体检测率大于 70%，行为及危险系数确认误识率小于 15%，理想情况下检测率可达 95%，误报率小于 5%。</li>
+        <li>第二个核心是高层建筑物边缘侧<strong>“人”</strong>的<strong>危险行为监测</strong>。</li>
+        <li>在同一个网络中<strong>融合时序信息和空间信息</strong>，捕捉视频中的动态行为和时间依赖特征，通过<strong>多头注意力和前馈网络</strong>处理。</li>
+        <li>最终使得人体检测率大于 <strong>70%</strong>，行为及危险系数确认<strong>误识率</strong>小于 <strong>15%</strong>，理想情况下检测率可达
+            <strong>95%</strong>，误报率小于 <strong>5%</strong>。
+        </li>
     </ul>
     <img src="image/README/1715679658779.jpg" alt="技术示意" />
 
@@ -163,7 +174,7 @@
 
 
     <h2>系统实现</h2>
-    <p>我们的系统坚持从<strong>双重监测角度<strong>出发，同时实现<strong>一体化通信<strong>和<strong>数据治理<strong>的交叉融合。</p>
+    <p>我们的系统坚持从<strong>双重监测角度</strong>出发，同时实现<strong>一体化通信</strong>和<strong>数据治理</strong>的交叉融合。</p>
     <img src="image/README/1715679775194.jpg" alt="系统实现" style="zoom:50%;" />
     <img src="image/README/1715699167031.jpg" alt="系统实现" style="zoom:50%;" />
 
@@ -172,7 +183,7 @@
     <img src="image/README/1715697181278.png" alt="产研一体" style="zoom:50%;" />
     <p>本作品由<strong>深圳英飞拓智能技术有限公司</strong>提供硬件支持，促进应用研发过程。</p>
     <img src="image/README/1715679811207.jpg" alt="系统实现" style="zoom:50%;" />
-    <p>计划将该系统应用于深圳湾超级总部基地及其他多个园区，实现落地试点，带来广泛的社会效益和显著的科技示范效益。</p>
+    <p>计划将该系统应用于<strong>深圳湾超级总部基地及其他多个园区</strong>，实现落地试点，带来广泛的社会效益和显著的科技示范效益。</p>
     <img src="image/README/1715679817826.png" alt="系统实现" style="zoom:50%;" />
 
     <h2>系统运行环境</h2>
