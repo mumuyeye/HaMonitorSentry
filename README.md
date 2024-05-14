@@ -80,12 +80,6 @@ fc-list | grep "MSYH"
 python demo.py
 ```
 
-## 演示视频
-
-<video src="README/演示视频_系统.mp4" controls style="width:100%;">
-    Your browser does not support the video tag.
-</video>
-
 ---
 
 <img src="image/README/1715680450611.jpg" alt="结尾图片" style="zoom:50%;" />
