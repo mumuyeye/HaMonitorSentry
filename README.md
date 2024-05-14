@@ -6,7 +6,7 @@
 >
 > 可访问 [作品主页](https://mumuyeye.github.io/HaMonitorSentry/README.html)。
 
-&nbsp;&nbsp;我们立足于 **智慧安防**、**智慧社区**、**智能建筑** 等国家新兴技术赋能行业，应用于 **高空抛物** 和 **高层危险行为监测** 等各类场景，致力于保障公民的生命财产安全。
+&nbsp;&nbsp;&nbsp;&nbsp;我们立足于 **智慧安防**、**智慧社区**、**智能建筑** 等国家新兴技术赋能行业，应用于 **高空抛物** 和 **高层危险行为监测** 等各类场景，致力于保障公民的生命财产安全。
 
 <img src="image/README/1715679541656.png" alt="监测示例" style="zoom:50%;" />
 
@@ -22,11 +22,11 @@
 
 <img src="image/README/背景_拼图.jpg" alt="背景介绍" style="zoom:50%;" />
 
-&nbsp;&nbsp;因此，我们迫切需要可以提供足够威慑力、监督民众违法行为、保障民众生命财产安全的**高层智能监测系统**。
+&nbsp;&nbsp;&nbsp;&nbsp;因此，我们迫切需要可以提供足够威慑力、监督民众违法行为、保障民众生命财产安全的**高层智能监测系统**。
 
 <img src="image/README/1715696975686.jpg" alt="解决方案" style="zoom:50%;" />
 
-&nbsp;&nbsp;与现有产品对比，我们更是将**多算法相互结合**，**功能全面**，在高层智能监测领域**独具优势**。
+&nbsp;&nbsp;&nbsp;&nbsp;与现有产品对比，我们更是将**多算法相互结合**，**功能全面**，在高层智能监测领域**独具优势**。
 
 <img src="image/README/1715697052594.jpg" alt="竞品分析" style="zoom:50%;" />
 
@@ -50,17 +50,17 @@
 
 ### 数据集构建与开源
 
-&nbsp;&nbsp;我们构建了高质量 [高空抛物检测原创数据集](https://pan.baidu.com/s/12ACPttrbEMglgN6v_PanEw?pwd=2333) ，涵盖丰富的场景及多样的抛物类别
+&nbsp;&nbsp;&nbsp;&nbsp;我们构建了高质量 [高空抛物检测原创数据集](https://pan.baidu.com/s/12ACPttrbEMglgN6v_PanEw?pwd=2333) ，涵盖丰富的场景及多样的抛物类别
 
 <img src="image/README/1715679712273.jpg" alt="技术示意" style="zoom:50%;" />
 
-&nbsp;&nbsp;以及高质量 [高层危险行为原创数据集](https://pan.baidu.com/s/12ACPttrbEMglgN6v_PanEw?pwd=2333) ，同样涉及丰富场景和多样的动作类别
+&nbsp;&nbsp;&nbsp;&nbsp;以及高质量 [高层危险行为原创数据集](https://pan.baidu.com/s/12ACPttrbEMglgN6v_PanEw?pwd=2333) ，同样涉及丰富场景和多样的动作类别
 
 <img src="image/README/1715679719404.jpg" alt="技术示意" style="zoom:50%;" />
 
 ### 系统实现
 
-&nbsp;&nbsp;坚持双重监测角度，同时实现一体化通信和数据治理的交叉融合。
+&nbsp;&nbsp;&nbsp;&nbsp;坚持双重监测角度，同时实现一体化通信和数据治理的交叉融合。
 
 <img src="image/README/1715679775194.jpg" alt="系统实现" style="zoom:50%;" />
 
@@ -68,15 +68,15 @@
 
 ### 产学研一体
 
-&nbsp;&nbsp;目前基于本作品已落实1项专利、3项软著、1篇学术论文以及2个原创数据集。
+&nbsp;&nbsp;&nbsp;&nbsp;目前基于本作品已落实1项专利、3项软著、1篇学术论文以及2个原创数据集。
 
 <img src="image/README/1715697181278.png" alt="产研一体" style="zoom:50%;" />
 
-&nbsp;&nbsp;本作品由深圳英飞拓智能技术有限公司提供硬件支持，促进应用研发过程。
+&nbsp;&nbsp;&nbsp;&nbsp;本作品由深圳英飞拓智能技术有限公司提供硬件支持，促进应用研发过程。
 
 <img src="image/README/1715679811207.jpg" alt="系统实现" style="zoom:50%;" />
 
-&nbsp;&nbsp;同时，本系统于深圳湾超级总部基地及其他多个园区进行落地试点，具备广泛社会效益与显著科技示范效益。
+&nbsp;&nbsp;&nbsp;&nbsp;同时，本系统于深圳湾超级总部基地及其他多个园区进行落地试点，具备广泛社会效益与显著科技示范效益。
 
 <img src="image/README/1715679817826.png" alt="系统实现" style="zoom:50%;" />
 
@@ -108,7 +108,7 @@ fc-list | grep "MSYH"
 
 ## 数据集示例
 
-&nbsp;&nbsp;如需下载 HaMonitorSentry 所使用的数据集示例，访问 [百度网盘链接](https://pan.baidu.com/s/12ACPttrbEMglgN6v_PanEw?pwd=2333) 并使用提取码 `2333` 进行下载。
+&nbsp;&nbsp;&nbsp;&nbsp;如需下载 HaMonitorSentry 所使用的数据集示例，访问 [百度网盘链接](https://pan.baidu.com/s/12ACPttrbEMglgN6v_PanEw?pwd=2333) 并使用提取码 `2333` 进行下载。
 
 ## 运行系统
 
