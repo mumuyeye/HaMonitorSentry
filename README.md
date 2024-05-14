@@ -6,7 +6,7 @@
 >
 > 可以访问我们的 [作品主页](https://mumuyeye.github.io/HaMonitorSentry/README.html) 来了解更多信息
 
-&nbsp;&nbsp;&nbsp;&nbsp;我们立足于 **智慧安防**、**智慧社区**、**智能建筑** 等国家新兴技术赋能行业，应用于 **高空抛物** 和 **高层危险行为监测** 等各类场景，致力于保障公民的生命财产安全；
+&nbsp;&nbsp;&nbsp;&nbsp;本作品立足于 **智慧安防**、**智慧社区**、**智能建筑** 等国家新兴技术赋能行业，应用于 **高空抛物溯源** 和 **高层危险行为监测** 等各类场景，致力于保障公民的生命财产安全；
 
 <img src="image/README/1715679541656.png" alt="监测示例" style="zoom:50%;" />
 
@@ -85,7 +85,7 @@
 
 - **操作系统**: Ubuntu 20.04.3 LTS (Focal Fossa)
 
-## 配置环境包
+## 环境配置
 
 ```bash
 git clone https://github.com/mumuyeye/HaMonitorSentry.git
@@ -94,7 +94,7 @@ conda env create -f environment.yml
 conda activate sentry
 ```
 
-## 系统显示字体安装
+## 系统显示配置
 
 ```bash
 # 创建字体目录（如果尚未存在）
@@ -107,11 +107,11 @@ fc-cache -fv
 fc-list | grep "MSYH"
 ```
 
-## 数据集示例
+## 数据集
 
 &nbsp;&nbsp;&nbsp;&nbsp;如需下载 HaMonitorSentry 所使用的数据集示例，访问 [百度网盘链接](https://pan.baidu.com/s/12ACPttrbEMglgN6v_PanEw?pwd=2333) 并使用提取码 `2333` 进行下载。
 
-## 运行系统
+## demo运行
 
 ```bash
 python demo.py
