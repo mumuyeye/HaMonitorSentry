@@ -2,7 +2,7 @@
 
 > **HaMonitorSentry** 是专为高层建筑和人群密集区设计的高级智能安防系统。该系统结合高分辨率、高帧率摄像技术和双角度监测策略，适用于智慧安防、智慧社区和智能建筑等行业，致力于与物业、企业、政府合作，以保障公民的生命和财产安全。
 >
-> 可访问 [作品主页](https://github.com/mumuyeye/HaMonitorSentry/README.html)。
+> 可访问 [作品主页](https://mumuyeye.github.io/HaMonitorSentry/README.html)。
 
 <img src="img/new_start.jpg" alt="系统概览" style="zoom:50%;" />
 
