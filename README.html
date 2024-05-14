@@ -1,131 +1,165 @@
 <!DOCTYPE html>
 <html lang="zh-CN">
+
 <head>
     <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>HaMonitorSentry 高层智能监测系统</title>
+    <link rel="icon" href="img/logo.png" type="image/png">
     <style>
         body {
             font-family: Arial, sans-serif;
             line-height: 1.6;
+            margin: 20px;
+            text-align: center;
             background-color: #f4f4f4;
+        }
+
+        h1,
+        h2,
+        h3 {
             color: #333;
-            margin: 0;
-            padding: 20px;
         }
-        h1, h2, h3, h4, h5, h6 {
-            color: #5C7CFA;
-        }
+
         .container {
             max-width: 900px;
             margin: 0 auto;
             background: #fff;
             padding: 20px;
             box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            border-radius: 10px;
         }
-        .highlight {
-            background-color: #FFFBCC;
-            padding: 10px;
-            border-left: 5px solid #FFC107;
-            margin: 10px 0;
-        }
-        .image {
-            text-align: center;
-            margin: 20px 0;
-        }
-        .image img {
-            max-width: 100%;
-            height: auto;
-        }
+
         .card {
             background: #f9f9f9;
             border: 1px solid #ddd;
-            padding: 15px;
+            padding: 20px;
             margin: 20px 0;
-            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+            border-radius: 5px;
+            max-width: 800px;
+            display: inline-block;
         }
-        .code {
-            background: #333;
-            color: #fff;
-            padding: 10px;
+
+        .highlight {
+            background: #ffeb3b;
+            padding: 2px 4px;
+            border-radius: 3px;
+        }
+
+        blockquote {
+            border-left: 4px solid #ccc;
+            margin: 1.5em 10px;
+            padding: 0.5em 10px;
+            color: #666;
+            background-color: #f9f9f9;
             border-radius: 5px;
         }
+
+        img {
+            max-width: 100%;
+            height: auto;
+            display: block;
+            margin: 0 auto;
+            border-radius: 5px;
+        }
+
         video {
-            width: 100%;
-            border: none;
+            max-width: 90%;
+            height: auto;
+            display: block;
+            margin: 20px auto;
             border-radius: 5px;
         }
+
         footer {
             text-align: center;
-            margin-top: 20px;
-            font-size: 0.9em;
+            margin-top: 50px;
             color: #777;
+        }
+
+        pre {
+            background: #333;
+            color: #fff;
+            text-align: left;
+            padding: 10px;
+            border-radius: 5px;
+            overflow-x: auto;
+        }
+
+        a {
+            color: #5C7CFA;
+            text-decoration: none;
+        }
+
+        a:hover {
+            text-decoration: underline;
+        }
+
+        .small-img {
+            max-width: 80%;
+            height: auto;
+            display: block;
+            margin: 20px auto;
+            border-radius: 5px;
         }
     </style>
 </head>
+
 <body>
     <div class="container">
         <h1>HaMonitorSentry 高层智能监测系统</h1>
         <blockquote>
-            <p><strong>HaMonitorSentry</strong> 是专为高层建筑和人群密集区设计的高级智能安防系统。该系统结合高分辨率、高帧率摄像技术和双角度监测策略，适用于智慧安防、智慧社区和智能建筑等行业，致力于与物业、企业、政府合作，以保障公民的生命和财产安全。</p>
+            <p><strong>HaMonitorSentry</strong>
+                是专为高层建筑和人群密集区设计的高级智能安防系统。该系统结合高分辨率、高帧率摄像技术和双角度监测策略，适用于智慧安防、智慧社区和智能建筑等行业，致力于与物业、企业、政府合作，以保障公民的生命和财产安全。
+            </p>
         </blockquote>
-
-        <div class="image">
+        <div class="card">
             <img src="img/new_start.jpg" alt="系统概览" />
         </div>
-
-        <div class="highlight">
-            <p>我们立足于 <strong>智慧安防</strong>、<strong>智慧社区</strong>、<strong>智能建筑</strong> 等国家新兴技术赋能行业，应用于 <strong>高空抛物</strong> 和 <strong>高层危险行为监测</strong> 等各类场景，致力于保障公民的生命财产安全。</p>
-        </div>
-
-        <div class="image">
+        <div class="card">
             <img src="image/README/1715679541656.jpg" alt="监测示例" />
         </div>
-
+        <p>我们立足于<span class="highlight">智慧安防</span>、<span class="highlight">智慧社区</span>、<span
+                class="highlight">智能建筑</span>等国家新兴技术赋能行业，应用于<span class="highlight">高空抛物</span>和<span
+                class="highlight">高层危险行为监测</span>等各类场景，致力于保障公民的生命财产安全。</p>
+        <div class="card">
+            <img src="image/README/1715679635883.jpg" alt="监测示例" />
+        </div>
         <h2>核心功能</h2>
         <h3>高空抛/坠物监测</h3>
+        <p>系统采用 <strong>Panoptic FPN ResNet-101 语义分割技术</strong> 提取建筑物背景并使用类间距离蒸馏，同时对运动对象进行去噪处理。引入 MA
+            模块，加速信息流动效率，使高空抛物检出率稳定在
+            <strong>65%</strong> 以上，误报率小于 <strong>15%</strong>，理想情况下检出率可达 <strong>95%</strong>，误报率小于
+            <strong>5%</strong>。
+        </p>
         <div class="card">
-            <p>系统采用 <strong>Panoptic FPN ResNet-101 语义分割技术</strong> 提取建筑物背景并使用类间距离蒸馏，同时对运动对象进行去噪处理。引入 MA 模块，加速信息流动效率，使高空抛物检出率稳定在 <strong>65%</strong> 以上，误报率小于 <strong>15%</strong>，理想情况下检出率可达 <strong>95%</strong>，误报率小于 <strong>5%</strong>。</p>
-        </div>
-
-        <div class="image">
             <img src="image/README/1715679658779.jpg" alt="技术示意" />
         </div>
-
         <h3>高层建筑边缘危险行为监测</h3>
+        <p>融合时序信息和空间信息，捕捉视频中的动态行为和时间依赖特征，通过多头注意力和前馈网络处理，使人体检测率大于 <strong>70%</strong>，行为及危险系数确认误识率小于
+            <strong>15%</strong>，理想情况下检测率可达 <strong>95%</strong>，误报率小于 <strong>5%</strong>。
+        </p>
         <div class="card">
-            <p>融合时序信息和空间信息，捕捉视频中的动态行为和时间依赖特征，通过多头注意力和前馈网络处理，使人体检测率大于 <strong>70%</strong>，行为及危险系数确认误识率小于 <strong>15%</strong>，理想情况下检测率可达 <strong>95%</strong>，误报率小于 <strong>5%</strong>。</p>
-        </div>
-
-        <div class="image">
             <img src="image/README/1715679712273.jpg" alt="技术示意" />
+        </div>
+        <div class="card">
             <img src="image/README/1715679719404.jpg" alt="技术示意" />
         </div>
-
         <h2>数据集建设</h2>
+        <p>我们构建了高空抛物检测原创数据集，涵盖多个场景、多种抛物类别；以及高层危险行为原创数据集，涉及多个场景、多个动作类别。</p>
         <div class="card">
-            <p>我们构建了高空抛物检测原创数据集，涵盖多个场景、多种抛物类别；以及高层危险行为原创数据集，涉及多个场景、多个动作类别。</p>
-        </div>
-
-        <div class="image">
             <img src="image/README/1715679775194.jpg" alt="数据集示例" />
         </div>
-
         <h2>系统实现</h2>
+        <p>坚持双重监测角度，同时实现一体化通信和数据治理的交叉融合。</p>
         <div class="card">
-            <p>坚持双重监测角度，同时实现一体化通信和数据治理的交叉融合。</p>
-        </div>
-
-        <div class="image">
             <img src="image/README/1715679811207.jpg" alt="系统实现" />
+        </div>
+        <div class="card">
             <img src="image/README/1715679817826.jpg" alt="系统实现" />
         </div>
-
         <h2>硬件支持</h2>
-        <div class="card">
-            <p>本作品由 <strong>深圳英飞拓智能技术有限公司</strong> 提供硬件支持，促进应用研发过程。计划将该系统应用于深圳湾超级总部基地及其他多个园区，实现落地试点，带来广泛的社会效益和显著的科技示范效益。</p>
-        </div>
-
-        <hr />
+        <p>本作品由 <strong>深圳英飞拓智能技术有限公司</strong> 提供硬件支持，促进应用研发过程。计划将该系统应用于深圳湾超级总部基地及其他多个园区，实现落地试点，带来广泛的社会效益和显著的科技示范效益。</p>
 
         <h2>系统运行环境</h2>
         <ul>
@@ -133,19 +167,14 @@
         </ul>
 
         <h2>配置环境包</h2>
-        <pre class="code">
-<code>
-git clone https://github.com/mumuyeye/HaMonitorSentry.git
+        <pre><code>git clone https://github.com/mumuyeye/HaMonitorSentry.git
 cd HaMonitorSentry
 conda env create -f environment.yml
 conda activate sentry
-</code>
-        </pre>
+</code></pre>
 
         <h2>系统显示字体安装</h2>
-        <pre class="code">
-<code>
-# 创建字体目录（如果尚未存在）
+        <pre><code># 创建字体目录（如果尚未存在）
 mkdir -p ~/.local/share/fonts
 # 复制字体文件
 cp /root/sentry/HaMonitorSentry/MSYH.TTF ~/.local/share/fonts/
@@ -153,33 +182,28 @@ cp /root/sentry/HaMonitorSentry/MSYH.TTF ~/.local/share/fonts/
 fc-cache -fv
 # 验证字体是否安装成功
 fc-list | grep "MSYH"
-</code>
-        </pre>
+</code></pre>
 
         <h2>数据集示例</h2>
-        <p>如需下载 HaMonitorSentry 所使用的数据集示例，访问 <a href="https://pan.baidu.com/s/12ACPttrbEMglgN6v_PanEw?pwd=2333">百度网盘链接</a> 并使用提取码 <strong>2333</strong> 进行下载。</p>
+        <p>如需下载 HaMonitorSentry 所使用的数据集示例，访问 <a
+                href="https://pan.baidu.com/s/12ACPttrbEMglgN6v_PanEw?pwd=2333">百度网盘链接</a>
+            并使用提取码 <strong>2333</strong> 进行下载。</p>
 
         <h2>运行系统</h2>
-        <pre class="code">
-<code>
-python demo.py
-</code>
-        </pre>
+        <pre><code>python demo.py
+</code></pre>
 
         <h2>演示视频</h2>
         <video src="README/演示视频_系统.mp4" controls>
             Your browser does not support the video tag.
         </video>
 
-        <hr />
-
-        <div class="image">
-            <img src="image/README/1715680450611.jpg" alt="结尾图片" />
-        </div>
-
         <footer>
-            <p><strong>驭科技以守护，持创新以护航</strong>，HaMonitorSentry 高层智能监测系统定会成为 <strong>智能安防，平安中国</strong> 之船的重要组成部分，载着人民共同渡往安全幸福的彼方。</p>
+            <img src="image/README/1715680450611.jpg" alt="结尾图片" class="small-img" />
+            <p><strong>驭科技以守护，持创新以护航</strong>，HaMonitorSentry 高层智能监测系统定会成为 <strong>智能安防，平安中国</strong>
+                之船的重要组成部分，载着人民共同渡往安全幸福的彼方。</p>
         </footer>
     </div>
 </body>
+
 </html>
